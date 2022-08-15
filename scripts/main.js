@@ -37,4 +37,46 @@ const checkboxes = document.querySelectorAll(".todo input");
 
 for (let i = 0; i < checkboxes.length; i++) {
   checkboxes[i].addEventListener("change", toggleDone);
+};
+
+function createTodo(title) {
+  // create a label
+  const label = document.createElement("label");
+  // create a checkbox
+  const checkbox = document.createElement("input")
+  checkbox.type = "checkbox";
+  checkbox.checked = false;
+  // add the "change" event listener to the checkbox
+  checkbox.addEventListener('change', toggleDone);
+  // and append the checkbox to the label
+  label.appendChild(checkbox);
+  // create a text node with the given title
+  const labelText = document.createTextNode(" " + title);
+  // and append the text node to the label
+  label.appendChild(labelText);
+
+  // create a list item
+  const listItem = document.createElement("li");
+  listItem.className = "todo"
+  // and append the label to list item
+  listItem.appendChild(label);
+  // append the list item to the todo list
+  const list = document.getElementById("todolist");
+  list.appendChild(listItem);
 }
+
+document
+  .querySelector("form")
+  .addEventListener("submit", function addNewTodo(event) {
+    event.preventDefault();
+
+    const inputField = document.querySelector("#new-todo");
+    const newTodoTitle = inputField.value;
+    createTodo(newTodoTitle);
+
+    // reset the value of the inputField to make it empty and
+    // ready to create new todos
+    inputField.value = null;
+
+    updateCounters();
+  });
