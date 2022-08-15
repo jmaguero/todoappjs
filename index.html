@@ -15,15 +15,21 @@
       </form>
       <ul id="todolist">
         <li class="todo">
-          <label><input type="checkbox" />Sweep the floor</label>
+          <label
+            ><input type="checkbox" onchange="toggleDone(event)" />Sweep the
+            floor</label
+          >
         </li>
         <li class="todo completed">
-          <label><input type="checkbox" checked />Dust the vases</label>
+          <label
+            ><input type="checkbox" onchange="toggleDone(event)" checked />Dust
+            the vases</label
+          >
         </li>
       </ul>
       <div class="footer">
         Todo: <span id="todo-count">1</span> • Done:
-        <span class="completed-count">0</span> • Total:
+        <span id="completed-count">0</span> • Total:
         <span class="total-count">1</span>
       </div>
     </div>
